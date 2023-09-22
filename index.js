@@ -1,10 +1,36 @@
 let button = document.getElementById("submit-button");
 let showContainer = document.getElementById("show-container");
 let input = document.getElementById("input-box");
+
 let heroes = null;
 let favourites = [];
 let favID = null;
+
+
 document.addEventListener("click", function (e){
+    
+    console.log(e.target)
+
+    if(e.target.id == "close"){
+        console.log("close")
+    popup[0].style.display = "none";
+    }
+    
+    if(e.target.tagName == "IMG"){
+        let currHeroId = e.target.id;
+        popup[0].style.display = "flex";
+        let currHero = heroes.data.results.filter(function (hero){
+            return hero.id == currHeroId;
+        });
+        console.log(currHero[0]);
+        popup[0].innerHTML = `<div id = "close">Close</div>`
+        popup[0].innerHTML += `<div class = "hero-card"}>
+        <img class = "hero-image" id = ${currHero[0].id.toString()} src = ${currHero[0].thumbnail.path.toString()}.${currHero[0].thumbnail.extension.toString()}></img>
+        <p>${currHero[0].name}</p><p>Description: ${currHero[0].description}</p><p>No. of Comics: ${currHero[0].comics.items.length}</p>
+        </div>`
+        console.log(currHero[0])
+    }
+
     if(e.target.innerHTML == "Add to Favourites"){
     console.log(e.target.innerHTML);
     e.target.innerHTML = "Remove from Favourites";
@@ -31,7 +57,7 @@ if(e.target.innerHTML == "Remove from Favourites"){
         showContainer.innerHTML = "";
         for(let i = 0; i < favourites.length; i++){
             showContainer.innerHTML += `<div class = "hero-card"}>
-        <img class = "hero-image" src = ${favourites[i].thumbnail.path.toString()}.${favourites[0].thumbnail.extension.toString()}></img>
+        <img class = "hero-image" id = ${favourites[i].id.toString()} src = ${favourites[i].thumbnail.path.toString()}.${favourites[0].thumbnail.extension.toString()}></img>
         <p>${favourites[i].name}</p><p class = "fav" id = ${favourites[i].id.toString()}>Remove from Favourites</p>
         </div>`
         }
@@ -62,7 +88,7 @@ button.addEventListener("click", function(){
 function renderHeroes(heroes){
     for(let i = 0; i < heroes.data.results.length; i++){
     showContainer.innerHTML += `<div class = "hero-card"}>
-        <img class = "hero-image" src = ${heroes.data.results[i].thumbnail.path.toString()}.${heroes.data.results[0].thumbnail.extension.toString()}></img>
+        <img class = "hero-image" id = ${heroes.data.results[i].id.toString()} src = ${heroes.data.results[i].thumbnail.path.toString()}.${heroes.data.results[0].thumbnail.extension.toString()}></img>
         <p>${heroes.data.results[i].name}</p><p class = "fav" id = ${heroes.data.results[i].id.toString()}>Add to Favourites</p>
         </div>`
     }
@@ -74,3 +100,8 @@ function renderHeroes(heroes){
         }
     }
 }
+
+// popup
+
+let close = document.getElementById("close");
+let popup = document.getElementsByClassName("popup");
