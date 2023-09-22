@@ -1,0 +1,96 @@
+html{
+    font-size: 10px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.6rem;
+}
+
+body{
+    background-color: darkred;
+}
+
+.section{
+    padding: 3rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+
+}
+
+.container{
+    background-color: brown;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input{
+    padding: 1rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+    border: 0;
+}
+
+button
+    {
+        padding: 1rem;
+        border-radius: 0 0.5rem 0.5rem 0;
+        border: 0;
+        background: red;
+        border-left: solid 1px black;
+    }
+
+.button:hover{
+    background: black;
+    color: red;
+    cursor: pointer;
+}
+
+.input{
+    display: grid;
+    grid-template-columns: minmax(0,3fr) minmax(0,1fr);
+    border: 1px solid black;
+    border-radius: 0.5rem;
+}
+
+.hero-image{
+    width : 100%;
+    object-fit: cover;
+    height: 300px;
+    border-radius: 5px 5px 0 0;
+}
+
+.display-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.fav{
+    background: red;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+#render-favs{
+    cursor: pointer;
+}
+
+.hero-card{
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: orange;
+    padding: 5px;
+    gap: 5px;
+}
